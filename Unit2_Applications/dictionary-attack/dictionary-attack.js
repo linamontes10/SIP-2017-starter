@@ -23,25 +23,41 @@ function init() {
 window.onload = init;
 
 /* ADD YOUR CODE BELOW */
-var matchedPassword = false
+
 function checkPassword() {
-	for (i=0; i<wordsList.length; i++){
-		var password = document.getElementById("pw").value;
-		if (password == wordsList[i]){
-			matchedPassword = true
+	var leet = {
+		4:"a",
+		0:"o",
+		1:"l",
+		3:"e",
+		5:"s",
+		7: "t"
+	}
+	var new_word= "";
+	var letter =""
+	var password = document.getElementById("pw").value;
+	for (i=0; i<password.length; i++){
+		letter = password.charAt(i);
+		if (leet[letter]){
+			new_word += leet[letter];
+		} else {
+			new_word += letter;
 		}
 	}
-
-	if (matchedPassword == true) {
-		alert("Please make a different password, your password is not safe.");
+	checkPasswordHelper(new_word);
+}
+function checkPasswordHelper(word_to_check){
+	var matchedPassword = false;
+	for (i=0; i<wordsList.length; i++){
+		if (word_to_check == wordsList[i]){
+			matchedPassword=true;
+		}
     }
+	if (matchedPassword==true){
+		alert("Please make a different password, your password is not safe.");
+	}
 
     else {
     	alert("Your password is safe!");
   	}
-}
-// //var new_word = " ";
-// var word = password
-// 	for (var i=0; i<word.lenght;i++){
-
-// 	}
+}	
